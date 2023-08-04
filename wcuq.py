@@ -93,3 +93,4 @@ def get_wcuq(self):
         return user_wordclowd
     else:
         print(f"errorcord : {errorcord}, text : {text_data}")
+        return None
