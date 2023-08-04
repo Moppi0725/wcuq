@@ -72,21 +72,24 @@ def createwordclowd(extracted_words):
 # テキストデータ（サンプルとして文章を使用）
 def get_wcuq(self):
     com = co.Communicator()
-    errorcord, test_data = co.get_article_text(user_name=self.name, token=self.token)
-    # 名詞と形容詞のみを抽出する
-    extracted_words = tokenize_and_extract_nouns_adjectives(text_data)
-    im = createwordclowd(extracted_words)
-    im_new = expand2square(im, (0, 0, 0))
-    im_new.save('/wordcloud_output_padding.png', quality=95)
-    #plt.show()
-    text_to_draw = self.name
-    font_path = "/ipam00303/ipam.ttf"
-    font_size = 20
-    font_color = (255, 255, 255)
-    height = 0
-    width = 0
-    img = add_text_to_image(im_new, text_to_draw, font_path, font_size, font_color, height, width)
-    final_output_path = '/user_wordclowd.png'
-    img.save()
-    user_wordclowd = Image.open(final_output_path)
-    return user_wordclowd
+    errorcord, text_data = co.get_article_text(user_name=self.name, token=self.token)
+    if errorcord == 0:
+        # 名詞と形容詞のみを抽出する
+        extracted_words = tokenize_and_extract_nouns_adjectives(text_data)
+        im = createwordclowd(extracted_words)
+        im_new = expand2square(im, (0, 0, 0))
+        im_new.save('/wordcloud_output_padding.png', quality=95)
+        #plt.show()
+        text_to_draw = self.name
+        font_path = "/ipam00303/ipam.ttf"
+        font_size = 20
+        font_color = (255, 255, 255)
+        height = 0
+        width = 0
+        img = add_text_to_image(im_new, text_to_draw, font_path, font_size, font_color, height, width)
+        final_output_path = '/user_wordclowd.png'
+        img.save()
+        user_wordclowd = Image.open(final_output_path)
+        return user_wordclowd
+    else:
+        print(f"errorcord : {errorcord}, text : {text_data}")
