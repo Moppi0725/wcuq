@@ -72,7 +72,7 @@ def createwordclowd(extracted_words):
 # テキストデータ（サンプルとして文章を使用）
 def get_wcuq(self):
     com = co.Communicator()
-    errorcord, text_data = co.get_article_text(user_name=self.name, token=self.token)
+    errorcord, text_data = com.get_article_text(user_name=self.name, token=self.token)
     if errorcord == 0:
         # 名詞と形容詞のみを抽出する
         extracted_words = tokenize_and_extract_nouns_adjectives(text_data)
