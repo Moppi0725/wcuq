@@ -75,7 +75,8 @@ def get_wcuq(self):
     errorcord, text_data = co.get_article_text(user_name=self.name, token=self.token)
     if errorcord == 0:
         # 名詞と形容詞のみを抽出する
-        extracted_words = tokenize_and_extract_nouns_adjectives(text_data)
+        normalized_text = text_data.lower()
+        extracted_words = tokenize_and_extract_nouns_adjectives(normalized_text)
         im = createwordclowd(extracted_words)
         im_new = expand2square(im, (0, 0, 0))
         im_new.save('/wordcloud_output_padding.png', quality=95)
