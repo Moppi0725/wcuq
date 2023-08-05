@@ -1,0 +1,7 @@
+population
+name
+prefecture
+capital
+Capital
+県
+市
