@@ -6,7 +6,7 @@ from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
 
-class wcuq:
+class Wcuq:
     def __init__(self, name, token):
         self.name = name
         self.token = token
