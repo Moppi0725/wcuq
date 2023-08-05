@@ -24,7 +24,7 @@ class Wcuq:
         words = []
         for token in tokens:
             # 名詞と形容詞の場合のみ単語を抽出
-            if '名詞' in token.part_of_speech or '形容詞' in token.part_of_speech:
+            if '名詞' in token.part_of_speech in token.part_of_speech:
                 words.append(token.base_form)
         return words
 
@@ -59,10 +59,6 @@ class Wcuq:
         stopwords_file = './stop_words.txt'
         stopwords = self.read_stopwords(stopwords_file)
         wordcloud = WordCloud(font_path='./ipam00303/ipam.ttf', max_words=100, stopwords=stopwords, background_color='white', max_font_size=50).generate(' '.join(extracted_words))
-        # # Word Cloudを描画
-        # plt.figure(figsize=(10, 5))
-        # plt.imshow(wordcloud, interpolation='bilinear')
-        # plt.axis('off')  # 軸を表示しないように設定
         # Word Cloudの画像をファイルに保存
         output_file_path = './wordcloud_output.png'
         wordcloud.to_file(output_file_path)
