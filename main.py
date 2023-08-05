@@ -9,7 +9,7 @@ def main():
     user_token = input("トークンを入力してください：")
     # 今後にタグ指定する選択できるようにしたい
 
-    print("ユーザID：{}\nユーザトークン：{}".format(user_name))
+    print(f"ユーザID：{user_name}の WrodCloud を作成します")
     wcuq.Wcuq(user_name, user_token)
 
 # main関数の呼び出し
