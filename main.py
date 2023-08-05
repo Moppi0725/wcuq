@@ -1,6 +1,6 @@
 # encode: utf-8
 import sys
-import wcuq
+import wcuq as wc
 
 
 def main():
@@ -10,7 +10,9 @@ def main():
     # 今後にタグ指定する選択できるようにしたい
 
     print(f"ユーザID：{user_name}の WrodCloud を作成します")
-    wcuq.Wcuq(user_name, user_token)
+    wcuq = wc.Wcuq(user_name, user_token)
+    wcuq.get_wcuq()
+    
 
 # main関数の呼び出し
 if __name__ == "__main__":
