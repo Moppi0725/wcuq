@@ -7,10 +7,11 @@ def main():
     # ユーザIDのユーザトークンを取得する（string型）
     user_name = input("ユーザIDを入力してください：")
     user_token = input("トークンを入力してください：")
+    font = input("フォントファイルを指定してください：")
     # 今後にタグ指定する選択できるようにしたい
 
     print(f"ユーザID：{user_name}の WrodCloud を作成します")
-    wcuq = wc.Wcuq(user_name, user_token)
+    wcuq = wc.Wcuq(user_name, user_token, font)
     wcuq.get_wcuq()
     
 

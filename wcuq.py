@@ -7,9 +7,10 @@ from PIL import ImageFont
 from PIL import ImageDraw
 
 class Wcuq:
-    def __init__(self, user_name, token):
+    def __init__(self, user_name, token, font):
         self.user_name = user_name
         self.token = token
+        self.font = font
 
     # Function to read stopwords from a file
     def read_stopwords(self, file_path):
@@ -41,9 +42,9 @@ class Wcuq:
             result.paste(pil_img, ((height - width) // 2, 0))
             return result
 
-    def add_text_to_image(self, img, text, font_path, font_size, font_color, height, width, max_length=740):
+    def add_text_to_image(self, img, text, font_size, font_color, height, width, max_length=740):
         position = (width, height)
-        font = ImageFont.truetype(font_path, font_size)
+        font = ImageFont.truetype(self.font, font_size)
         draw = ImageDraw.Draw(img)
         if draw.textsize(text, font=font)[0] > max_length:
             while draw.textsize(text + '…', font=font)[0] > max_length:
@@ -58,7 +59,7 @@ class Wcuq:
         # Read stopwords from the file
         stopwords_file = './stop_words.txt'
         stopwords = self.read_stopwords(stopwords_file)
-        wordcloud = WordCloud(font_path='./ipam00303/ipam.ttf', max_words=100, stopwords=stopwords, background_color='white', max_font_size=50).generate(' '.join(extracted_words))
+        wordcloud = WordCloud(self.font, max_words=100, stopwords=stopwords, background_color='white', max_font_size=50).generate(' '.join(extracted_words))
         # Word Cloudの画像をファイルに保存
         output_file_path = './wordcloud_output.png'
         wordcloud.to_file(output_file_path)
@@ -77,12 +78,11 @@ class Wcuq:
             im_new.save('./wordcloud_output_padding.png', quality=95)
             #plt.show()
             text_to_draw = self.user_name
-            font_path = "./ipam00303/ipam.ttf"
             font_size = 20
             font_color = (255, 255, 255)
             height = 0
             width = 0
-            img = self.add_text_to_image(im_new, text_to_draw, font_path, font_size, font_color, height, width)
+            img = self.add_text_to_image(im_new, text_to_draw, font_size, font_color, height, width)
             final_output_path = './user_wordclowd.png'
             img.save(final_output_path)
             user_wordclowd = Image.open(final_output_path)
