@@ -1,6 +1,5 @@
 from janome.tokenizer import Tokenizer
 from wordcloud import WordCloud
-import matplotlib.pyplot as plt
 import communicator as co
 from PIL import Image
 from PIL import ImageFont
