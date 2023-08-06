@@ -9,7 +9,7 @@ word cloud used qiita: 自分のQiita記事からワードクラウドを作成�
 
 # 必要なライブラリ
 以下のインストールが必要
-・pip install janome
-・pip install wordcloud
-・pip install matplotlib
-・pip install Pillow
+・pip install janome 
+・pip install wordcloud 
+・pip install matplotlib 
+・pip install Pillow 
