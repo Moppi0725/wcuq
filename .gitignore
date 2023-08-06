@@ -213,3 +213,7 @@ cython_debug/
 user_wordclowd.png
 wordcloud_output.png
 wordcloud_output_padding.png
+
+# font
+*.ttf
+*.ttc
